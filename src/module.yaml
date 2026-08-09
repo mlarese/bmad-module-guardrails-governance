@@ -4,13 +4,11 @@
 # Non modificare qui: le modifiche si fanno nella fonte e poi si rigenera.
 #
 # Questa è la copia che legge l'installer BMad: la cerca in src/module.yaml.
-# La copia in src/skills/grg-setup/assets/module.yaml resta per
-# l'installazione manuale via grg-setup: le due sono identiche.
 
 code: grg
 name: Guardrails Governance
 description: "Tre figure di presidio su privacy e GDPR, legale e licenze, compliance normativa — più un workflow di ricerca live sugli aggiornamenti legali. Separano l'obbligo vero dalla prassi diffusa, e dicono quali norme non si applicano."
-module_version: 1.20.0
+module_version: 1.21.0
 default_selected: false
 
 module_greeting: >
@@ -25,7 +23,7 @@ module_greeting: >
 # memoria condivisa del progetto (_bmad/memory/grl-shared/project-profile.md).
 # La severità si deriva dalla criticità dichiarata nel profilo di progetto.
 #
-# La cartella della memoria condivisa NON va creata dal setup: la crea
+# La cartella della memoria condivisa NON va creata dall'installer: la crea
 # grg-profile alla prima esecuzione.
 #
 # Questo modulo è una porzione del bundle Guardrails (`grl`). Bundle e moduli
