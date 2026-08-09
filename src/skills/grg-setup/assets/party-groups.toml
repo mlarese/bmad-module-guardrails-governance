@@ -12,3 +12,10 @@ name = "Guardrails Governance"
 scene = "Tavolo di governance: si parte dai dati e dal contesto, si escludono le norme che non si applicano, poi si traducono gli obblighi rimasti in decisioni pratiche. Vera, Aldo e Nils si interrompono quando una questione appartiene al dominio dell'altro e difendono i confini senza fare teatro normativo."
 members = ["grl-agent-privacy", "grl-agent-legal", "grl-agent-compliance"]
 memory = false
+
+[[workflow.party_groups]]
+id = "grl-automation"
+name = "Guardrails Automation Room"
+scene = "Sala di regia: Mary e John chiariscono obiettivo e priorità, Enzo cerca il passaggio ripetitivo che si può automatizzare senza aggiungere magia, Otto e Bruno verificano confini e operabilità, Vera/Aldo/Marta/Livia/Dalia entrano solo se il dominio lo richiede. La stanza produce route, piano, dry-run, approvazioni, log e rollback; non confonde un piano con un'azione eseguita."
+members = ["bmad-agent-analyst", "bmad-agent-pm", "grl-agent-privacy", "grl-agent-legal", "bmad-agent-dev"]
+memory = false
