@@ -1,61 +1,54 @@
 # Guardrails Governance (`grg`)
 
-Tre figure di presidio su privacy e GDPR, legale e licenze, compliance normativa — più un workflow di ricerca live sugli aggiornamenti legali. Separano l'obbligo vero dalla prassi diffusa, e dicono quali norme non si applicano.
+A focused BMad module for privacy, legal and licensing, regulatory compliance, and live legal updates. It separates actual obligations from common practice and identifies rules that do not apply.
 
-Modulo BMad. È una porzione del bundle [Guardrails](https://github.com/mlarese/bmad-module-guardrails):
-stesse figure, stesso comportamento, solo l'area governance.
+This is a focused BMad module in the [Guardrails](https://github.com/mlarese/bmad-module-guardrails)
+bundle. It keeps the same behavior and shared memory while installing only the figures and
+workflows for the governance area.
 
-> **Generato.** Questo repository è prodotto da `tools/build_modules.py` nel
-> repository [bmad-module-guardrails](https://github.com/mlarese/bmad-module-guardrails).
-> Le modifiche si fanno lì e poi si rigenera: qui vengono sovrascritte.
+> **Generated.** This repository is produced by `tools/build_modules.py` in the
+> [bmad-module-guardrails](https://github.com/mlarese/bmad-module-guardrails) repository.
+> Make changes there and regenerate; local changes here will be overwritten.
 
-## Figure
+## Agents
 
-| Figura | Ruolo | Skill | Cosa presidia |
-| ------ | ----- | ----- | ------------- |
-| 🛡️ Vera | Data Protection Officer | `grl-agent-privacy` | Parte sempre dai dati concreti — quali dati personali esattamente, chi li vede, per quanto tempo — e separa l'obbligo GDPR vero dalla prassi diffusa: base giuridica di una… |
-| ⚖️ Aldo | Tech Lawyer | `grl-agent-legal` | Traduce licenze open source (GPL, AGPL, MIT), proprietà intellettuale del codice — anche quello generato dall'AI — contratti e DPA con i fornitori, termini di servizio e vincoli… |
-| 📐 Nils | Regulatory Compliance | `grl-agent-compliance` | Prima esclude, poi prescrive: delle norme che ti preoccupano, quasi sempre metà non ti riguarda. |
+| Agent | Role | Skill | Focus |
+| ----- | ---- | ----- | ----- |
+| 🛡️ Vera | Data Protection Officer | `grl-agent-privacy` | Personal data, GDPR, DPIAs, retention, analytics, logs, and data in prompts. |
+| ⚖️ Aldo | Tech Lawyer | `grl-agent-legal` | Licenses, contracts, DPAs, ownership, AI outputs, and AI Act obligations. |
+| 📐 Nils | Regulatory Compliance | `grl-agent-compliance` | NIS2, DORA, EAA/WCAG, eIDAS, CRA, MDR, and sector-specific obligations. |
 
-## Skill e workflow
+## Skills and workflows
 
-| Skill | Comando | Cosa fa |
-| ----- | ------- | ------- |
-| `grg-profile` | Profila il progetto | Raccoglie in pochi minuti gli otto campi che danno contesto a tutte e tre le figure, criticità inclusa. |
-| `grg-profile` | Aggiorna il profilo | Riallinea il profilo quando il progetto cambia, e dice se il cambiamento invalida rischi già accettati. |
-| `grg-board` | Convoca il collegio | Fa leggere lo stesso artefatto alle sole figure pertinenti e restituisce un riepilogo unico, conflitti compresi. |
-| `grg-board` | Rischi già accettati | Mostra, raggruppato per figura, quello che il progetto ha consapevolmente scelto di accettare. |
-| `grg-board` | Gate di rilascio | Verifica una release identificata e restituisce GO, GO_CON_CONDIZIONI, NO_GO o EVIDENZA_INSUFFICIENTE. |
-| `grl-legal-updates` | Ultime novità legali | Recupera leggi, decreti, bollettini, sentenze ed emendamenti nel periodo indicato, con ricerca live, matrice di copertura, lineage di vigenza e due gate bmad-review. |
-| `grl-automation` | Instrada un'automazione | Classifica lo scenario, sceglie agenti e workflow BMad e dichiara capability mancanti, scope e approvazioni, includendo social/content e creative video. |
-| `grl-automation` | Prepara un piano eseguibile | Costruisce passi idempotenti con input, output, precondizioni, rischio, approvazione e rollback. |
-| `grl-automation` | Esegui controlli read-only | Raccoglie evidenze e confronti riproducibili senza modificare sistemi esterni. |
-| `grl-automation` | Prepara un dry-run | Genera e valida diff o payload senza spendere, pubblicare o applicare side effect. |
-| `grl-automation` | Esegui dopo approvazione | Applica solo lo scope approvato, registra prima/dopo e osserva il risultato; in caso di errore attiva il rollback. |
-| `grl-automation` | Riprendi un'automazione | Riprende un run esistente dal primo passo non concluso senza duplicare scritture o side effect. |
+| Skill | Purpose |
+| ----- | ------- |
+| `grg-profile` | Project profile | Collects the project context shared by every installed figure. |
+| `grg-board` | Multidisciplinary review | Convenes the relevant figures on one artifact and returns a review summary or release verdict. |
+| `grl-legal-updates` | Live legal updates | Searches primary sources for laws, decrees, rulings, and amendments in a defined period, with coverage and freshness checks. |
+| `grl-automation` | Controlled automation | Routes work from read-only checks through dry-run to observable execution, with explicit approvals and rollback. |
 
-## Installazione
+## Installation
 
 ```
 bmad install grg
 ```
 
-Poi, come primo passo, `grg-profile`: raccoglie il profilo di progetto — settore,
-dati trattati, mercato, stack, criticità — e da lì ogni figura deriva quanto essere
-severa. Senza profilo il default resta `normal` e le figure partono senza contesto.
+As a first step, run `grg-profile`. It collects the project profile — sector, data,
+market, stack, and criticality — so each figure can calibrate its review. Without a profile,
+the default remains `normal` and the figures start without context.
 
-## Memoria condivisa
+## Shared memory
 
-Il profilo vive in `{project-root}/_bmad/memory/grl-shared/project-profile.md`, insieme
-a `decisions.md` e `accepted-risks.md`. Il percorso è lo stesso per tutti i moduli
-Guardrails: installandone due, il profilo resta uno solo e si compila una volta.
+The profile lives in `{project-root}/_bmad/memory/grl-shared/project-profile.md`, together
+with `decisions.md` and `accepted-risks.md`. All Guardrails modules use the same path, so two
+installed modules still share one profile.
 
-## Convivenza con il bundle
+## Using it with the bundle
 
-Questo modulo installa skill con **lo stesso nome** del bundle `grl` — `grl-agent-privacy`
-sta identica in entrambi. Bundle e moduli tematici non vanno installati insieme nello
-stesso progetto: si sceglie il bundle completo, oppure i moduli delle aree che servono.
+This module installs skills with **the same names** as the `grl` bundle — `grl-agent-privacy`
+is identical in both. Do not install the full bundle and thematic modules in the same project:
+choose the complete bundle, or only the thematic modules you need.
 
-## Licenza
+## License
 
 MIT.
