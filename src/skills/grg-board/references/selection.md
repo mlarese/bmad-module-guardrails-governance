@@ -5,7 +5,7 @@ Chi entra e su quale segnale. Una figura entra solo se nell'artefatto — o nel 
 | Figura | Skill | Entra quando compare |
 | ------ | ----- | -------------------- |
 | Vera 🛡️ | `grl-agent-privacy` | dati riferibili a persone: registrazione, profili, log, analytics, email, esportazioni, backup, prompt verso un LLM che portano dati utente |
-| Aldo ⚖️ | `grl-agent-legal` | dipendenze e loro licenze, modello di distribuzione, contratti o capitolati, ToS, titolarità del codice, fonti dei dati di training, e qualunque componente AI — la classificazione AI Act e ciò che ne discende sono sue |
+| Aldo ⚖️ | `grl-agent-legal` | dipendenze e loro licenze, modello di distribuzione, contratti o capitolati, ToS, titolarità del codice, fonti dei dati di training e AI Act generale — classificazione, ruolo e obblighi; FRIA, bias, sandbox e spiegazione nell'intersezione AI Act-GDPR restano di Vera |
 | Nils 📐 | `grl-agent-compliance` | settore regolamentato, prodotto pubblico soggetto ad accessibilità, obblighi documentali, scadenze normative delle norme diverse dall'AI Act |
 
 Oltre alle figure, una rotta: su una landing o una pagina di prodotto convoca anche `grl-web` in diagnosi, per l'asse che nessuna figura copre — cosa la pagina dice, in che ordine, e se chiede l'azione prima di aver smontato l'obiezione. Quando la pagina arriva dal gate di `grl-web`, la lettura non ripete l'asse ma lo **verifica**: si ricostruisce il brief dalla pagina a freddo e si dice dove diverge da quello scritto. Se non diverge, è una riga sola. Conta come rotta, non come figura del collegio.
@@ -20,7 +20,7 @@ Chi ha la competenza decisiva parla, gli altri tacciono anche quando il tema li 
 | Cifratura dei dati a riposo | Kai (come si fa) | Vera dice solo *che* serve |
 | Libreria con licenza AGPL | Aldo | Nils |
 | Vulnerabilità nota in una dipendenza | Kai | Aldo, anche se la licenza è nello stesso manifest |
-| Il prodotto usa un LLM | tre assi distinti: Enzo sull'impianto (RAG, orchestrazione, eval, costi), Aldo sull'AI Act — classificazione, obblighi, dati di training, IP degli output — e Kai sui rischi dell'integrazione | Nils, salvo che il progetto tocchi anche una norma diversa dall'AI Act |
+| Il prodotto usa un LLM | assi distinti: Enzo sull'impianto (RAG, orchestrazione, eval, costi), Aldo sull'AI Act generale — classificazione, obblighi, dati di training, IP degli output — Vera sull'intersezione AI Act-GDPR (FRIA, bias, basi giuridiche, retention, spiegazione) e Kai sui rischi dell'integrazione | Nils, salvo che il progetto tocchi anche una norma diversa dall'AI Act |
 | Imposte, IVA, contributi e regimi fiscali | Marta | Aldo se il tema diventa contratto o diritto tecnologico; Nils se riguarda una norma regolatoria non fiscale |
 | Ammissibilità di un bando o incentivo | Marta | Nils solo per una soglia regolatoria distinta; Aldo per contratto, licenza o responsabilità |
 | Accessibilità WCAG | Nils (l'obbligo) | Iris solo su come realizzarla senza imbruttire |
@@ -38,6 +38,9 @@ Le tabelle qui sopra citano anche figure Guardrails che questo modulo non instal
 Qui sono installate: Vera (grl-agent-privacy), Aldo (grl-agent-legal), Nils (grl-agent-compliance).
 
 Quando il tema appartiene a una figura assente, il confine resta valido: **dichiara che
-il tema esce dal perimetro, nomina la competenza che servirebbe e prosegui su ciò che
-resta.** Non improvvisare il parere della figura mancante e non fermare il lavoro. Il
-modulo che la contiene si installa a parte; il bundle completo `grl` le contiene tutte.
+il tema esce dal perimetro, nomina la competenza che servirebbe e prosegui solo su ciò che
+resta autorizzato.** Registra `missing_capability` e `handoff_status: pending`; non
+improvvisare il parere mancante, non dichiarare completato il passaggio e non superare un
+gate che dipende da quella capacità. Il lavoro indipendente può continuare, il gate dipendente
+resta `blocked` o `EVIDENZA_INSUFFICIENTE`. Il modulo che la contiene si installa a parte; il
+bundle completo `grl` le contiene tutte.
