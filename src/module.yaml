@@ -8,7 +8,7 @@
 code: grg
 name: Guardrails Governance
 description: "Tre figure di presidio su privacy e GDPR, legale e licenze, compliance normativa — più un workflow di ricerca live sugli aggiornamenti legali. Separano l'obbligo vero dalla prassi diffusa, e dicono quali norme non si applicano."
-module_version: 1.26.0
+module_version: 1.27.0
 default_selected: false
 
 module_greeting: >
