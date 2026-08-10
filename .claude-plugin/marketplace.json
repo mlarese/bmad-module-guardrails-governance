@@ -7,7 +7,7 @@
       "name": "grg",
       "source": "./src",
       "description": "Tre figure di presidio su privacy e GDPR, legale e licenze, compliance normativa — più un workflow di ricerca live sugli aggiornamenti legali. Separano l'obbligo vero dalla prassi diffusa, e dicono quali norme non si applicano.",
-      "version": "1.32.0",
+      "version": "1.33.0",
       "author": "mlarese",
       "homepage": "https://github.com/mlarese/bmad-module-guardrails-governance",
       "repository": "https://github.com/mlarese/bmad-module-guardrails-governance",
